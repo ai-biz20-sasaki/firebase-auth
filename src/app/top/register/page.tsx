@@ -17,7 +17,22 @@ const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  // デバッグ用一括ログ表示のフラグ
+  let debugShowLogs = false;
+  // デバッグ用一括ログ表示を切り替える関数
+  function toggleLogs() {
+    debugShowLogs = !debugShowLogs;
+  }
+
+  // デバッグ用一括コンソールログ出力する関数
+  function toggleConsoleLog(message: any) {
+    if (debugShowLogs) {
+      console.log(message);
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    toggleConsoleLog("handleSubmit に入った")
     e.preventDefault()
     await createUserWithEmailAndPassword(auth, email, password)
     router.push("/")
@@ -26,9 +41,11 @@ const Signup = () => {
     await router.push("/")
   }
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    toggleConsoleLog("handleChangeEmail に入った")
     setEmail(e.currentTarget.value)
   }
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    toggleConsoleLog("handleChangePassword に入った")
     setPassword(e.currentTarget.value)
   }
   return (
