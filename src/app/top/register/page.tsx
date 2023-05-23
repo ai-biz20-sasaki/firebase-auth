@@ -68,6 +68,11 @@ const Signup = () => {
           すでにログインしています
         </Alert>
       </Snackbar>
+      <Link className="text-xl"
+        href="/top"
+      >
+        topに戻る
+      </Link>
       <h2>ユーザー登録</h2>
       <form onSubmit={handleSubmit}>
         <div
